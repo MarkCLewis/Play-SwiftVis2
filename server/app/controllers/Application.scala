@@ -18,7 +18,7 @@ class Application @Inject()(cc: ControllerComponents) extends AbstractController
   }
 
   def ringParticles(start: Int, count: Int) = Action {
-    Ok(Json.toJson(particles.slice(start, start+count)))
+    Ok(Json.toJson(particles.slice(start, start+count).map(p => Array(p(0), p(1), p(6)))))
   }
 
 }
