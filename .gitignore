@@ -1,6 +1,8 @@
 .metals
 .bloop
 
+data/
+
 logs
 project/project
 project/target
