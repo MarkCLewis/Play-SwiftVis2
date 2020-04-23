@@ -23,6 +23,6 @@ object SVGPlot extends App {
     xSizing = PlotSymbol.Sizing.Scaled, ySizing = PlotSymbol.Sizing.Scaled)
     .updatedAxis[NumericAxis]("x", axis => axis.copy(min = Some(-0.19), max = Some(-0.14), tickLabelInfo = axis.tickLabelInfo.map(_.copy(numberFormat = "%1.2f"))))
     .updatedAxis[NumericAxis]("y", axis => axis.copy(min = Some(100.77), max = Some(100.72), tickLabelInfo = axis.tickLabelInfo.map(_.copy(numberFormat = "%1.2f"))))
-  JVMSVGInterface.apply(plot, "/home/mlewis/Downloads/svgPlot.svg", 1200, 1000)
+  JVMSVGInterface(plot, "/home/mlewis/Downloads/svgPlot.svg", 1200, 1000)
   println((System.nanoTime() - start) * 1e-9)
 }

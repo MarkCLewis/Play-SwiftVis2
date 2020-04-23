@@ -17,7 +17,6 @@ object ScalaJSExample {
   implicit val ec = scala.concurrent.ExecutionContext.global
   private var fullData = js.Array[IndexedSeq[Array[Double]]]()
   val canvas = document.getElementById("ring-plot").asInstanceOf[html.Canvas]
-  val renderer = new JSRenderer(canvas)
 
   def main(args: Array[String]): Unit = {
     //dom.window.setTimeout(() => getData(0, 10000), 1000)
@@ -37,7 +36,7 @@ object ScalaJSExample {
             xSizing = PlotSymbol.Sizing.Scaled, ySizing = PlotSymbol.Sizing.Scaled)
             .updatedAxis[NumericAxis]("x", axis => axis.copy(min = Some(-0.19), max = Some(-0.14), tickLabelInfo = axis.tickLabelInfo.map(_.copy(numberFormat = "%1.2f"))))
             .updatedAxis[NumericAxis]("y", axis => axis.copy(min = Some(100.77), max = Some(100.72), tickLabelInfo = axis.tickLabelInfo.map(_.copy(numberFormat = "%1.2f"))))
-          plot.render(renderer, Bounds(0, 0, canvas.width, canvas.height))
+          JSRenderer(plot, canvas)
           if (data.length >= count) dom.window.setTimeout(() => getData(start + count, count), 1000)
         case e @ JsError(_) => println(e)
       }
@@ -54,6 +53,6 @@ object ScalaJSExample {
       xSizing = PlotSymbol.Sizing.Scaled, ySizing = PlotSymbol.Sizing.Scaled)
       .updatedAxis[NumericAxis]("x", axis => axis.copy(min = Some(-0.19), max = Some(-0.14), tickLabelInfo = axis.tickLabelInfo.map(_.copy(numberFormat = "%1.2f"))))
       .updatedAxis[NumericAxis]("y", axis => axis.copy(min = Some(100.77), max = Some(100.72), tickLabelInfo = axis.tickLabelInfo.map(_.copy(numberFormat = "%1.2f"))))
-    plot.render(renderer, Bounds(0, 0, canvas.width, canvas.height))
+    JSRenderer(plot, canvas)
   }
 }
