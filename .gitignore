@@ -3,6 +3,7 @@
 .vscode
 
 data/
+CartAndRad.*
 
 logs
 project/project
