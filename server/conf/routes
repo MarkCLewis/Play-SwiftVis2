@@ -5,6 +5,7 @@
 # Home page
 GET        /                             controllers.Application.index
 GET        /ringParticles                controllers.Application.ringParticles(start: Int, count: Int)
+GET        /reactPlot                    controllers.Application.reactPlot
 
 # Prefix must match `play.assets.urlPrefix`
 GET        /assets/*file                 controllers.Assets.at(file)

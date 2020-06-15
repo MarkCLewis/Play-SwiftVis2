@@ -23,9 +23,10 @@ lazy val client = (project in file("client")).settings(commonSettings).settings(
   scalaJSUseMainModuleInitializer := true,
   libraryDependencies ++= Seq(
     "org.scala-js" %%% "scalajs-dom" % "0.9.7",
-		"me.shadaj" %%% "slinky-core" % "0.6.3",
-    "me.shadaj" %%% "slinky-web" % "0.6.3",
-    "edu.trinity" %%% "swiftvis2js" % "0.1.0-SNAPSHOT"
+		"me.shadaj" %%% "slinky-core" % "0.6.5",
+    "me.shadaj" %%% "slinky-web" % "0.6.5",
+    "edu.trinity" %%% "swiftvis2js" % "0.1.0-SNAPSHOT",
+    "edu.trinity" %%% "swiftvis2react" % "0.1.0-SNAPSHOT"
   ),
   scalacOptions += "-P:scalajs:sjsDefinedByDefault"
 ).enablePlugins(ScalaJSPlugin, ScalaJSWeb).

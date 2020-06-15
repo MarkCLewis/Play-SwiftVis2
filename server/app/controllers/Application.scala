@@ -21,4 +21,8 @@ class Application @Inject()(cc: ControllerComponents) extends AbstractController
     Ok(Json.toJson(particles.slice(start, start+count).map(p => Array(p(0), p(1), p(6)))))
   }
 
+  def reactPlot = Action {
+    Ok(views.html.reactPlot())
+  }
+
 }

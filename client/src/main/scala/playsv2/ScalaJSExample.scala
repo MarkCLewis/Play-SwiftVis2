@@ -12,6 +12,7 @@ import play.api.libs.json.Json
 import play.api.libs.json.JsSuccess
 import play.api.libs.json.JsError
 import scalajs.js
+import slinky.web.ReactDOM
 
 object ScalaJSExample {
   implicit val ec = scala.concurrent.ExecutionContext.global
@@ -19,8 +20,15 @@ object ScalaJSExample {
   val canvas = document.getElementById("ring-plot").asInstanceOf[html.Canvas]
 
   def main(args: Array[String]): Unit = {
-    //dom.window.setTimeout(() => getData(0, 10000), 1000)
-    dom.window.setTimeout(() => plotFromTop(), 10000)
+    println("Running scala.js")
+    if (document.getElementById("react-root")!=null) {
+      println("React version")
+      ReactDOM.render(swiftvis2.SwiftVis2Component(playground.PlotTesting.longForm(), 1200, 1000), document.getElementById("react-root"))
+    } else {
+      println("Canvas version")
+      //dom.window.setTimeout(() => getData(0, 10000), 1000)
+      dom.window.setTimeout(() => plotFromTop(), 10000)
+    }
   }
 
   def getData(start: Int, count: Int): Unit = {
